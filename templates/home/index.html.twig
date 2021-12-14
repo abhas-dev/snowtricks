@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil{% endblock %}
+
+{% block body %}
+    <section class="hero">
+    </section>
+    <section class="container my-5">
+        <div id="tricks" class="row g-4 d-sm-flex trick-container">
+            {% for trick in tricks %}
+                <div class="col-12 col-md-6 col-lg-3 pt-5">
+                    {% include "trick/_trick_card.html.twig" %}
+                </div>
+            {% endfor %}
+        </div>
+
+        <div id="loadMoreSection" class="my-5 d-flex justify-content-center align-items-center">
+            <a href="{{ path('homepage') }}" id="js-loadMore_tricks" class="btn btn-primary"><i class="fa fa-spinner"></i> Charger Plus</a>
+        </div>
+    </section>
+
+    <a href="#" class="position-absolute bottom-0 end-0 p-5">
+        <i class="bi bi-arrow-up-circle h1"> </i>
+    </a>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('homepage') }}
+{% endblock %}
